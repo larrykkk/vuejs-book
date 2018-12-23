@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="demo">
+      <div>demo1</div>
+      第一種
+      <button-counter></button-counter>
+      <br />
+      第二種<my-component></my-component>
+    </div>
+    <hr>
+    <div id="demo2">
+      <div>demo2</div>
+      第一種
+      <button-counter></button-counter>
+      <br />
+      第二種<my-component></my-component>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
+    <script>
+      // 直接在script 裡面建立一個component
+      // 定义一个名为 button-counter 的新组件
+      Vue.component("button-counter", {
+        data() {
+          return {
+            count: 0
+          };
+        },
+        template:
+          '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+      });
+
+      new Vue({
+        el: "#demo",
+        components: {
+          "my-component": {
+            template:
+              "<h3>直接在vue instance 裡面寫component 缺點是就只能給這個instance使用  {{ msg }}</h3>",
+            data() {
+              return {
+                msg: "hello world"
+              };
+            }
+          }
+        }
+      });
+      new Vue({
+        el: "#demo2"
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-for="(btn, index) in btns" :key="index" @click="currentImg = imgs[index]">{{ btn }}</button>
+      <br>
+      <keep-alive>
+          <component :is="currentImg"></component>
+        </keep-alive>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
+    <script>
+      Vue.component("cat", {
+        template: `
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/230px-Cat03.jpg" width="200px">
+        `
+      });
+
+      Vue.component("dog", {
+        template: `
+        <img src="https://cdn.hk01.com/di/media/images/1748908/org/9ab92913858a9777ad41b22d5106e1b1.jpg/3Sr8HAlz0PniqgXVD3-Zwm68ETQnL6F-4vUMs-L1DLM?v=w1920" width="200px">
+        `
+      });
+
+      Vue.component("rabbit", {
+        template: `
+            <img src="https://storage.googleapis.com/petsmao-images/images/2017/10/c9c5657f6fc69b27_0.jpg" width="200px">
+        `
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          btns: ["貓", "狗", "兔"],
+          imgs: ["cat","dog","rabbit"],
+          currentImg: "cat"
+        }
+      });
+    </script>
+  </body>
+</html>
