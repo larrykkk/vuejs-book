@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <child
+        :name="'larry'"
+        :age="22"
+        :is-men="true"
+        :other="'success'"
+      ></child>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
+    <script>
+      Vue.component("child", {
+        props: {
+          name: {
+            type: String,
+            required: true
+          },
+          age: { type: Number, default: 100 },
+          isMen: Boolean,
+          friends: Array,
+          skill: {
+            type: Object,
+            default: function() {
+              return { name: "fist" };
+            }
+          },
+          other: {
+            //驗證器
+            validator: function(value) {
+              // 这个值必须匹配下列字符串中的一个
+              return ["success", "warning", "danger"].indexOf(value) !== -1;
+            }
+          }
+        },
+        computed: {
+          sex() {
+            return this.isMen ? "man" : "women";
+          }
+        },
+        template: `<div> my name is {{ name }}, age is {{ age }}, I am a {{ sex }}, I can {{ skill.fight }}, status is {{ other }} </div>`
+      });
+      new Vue({
+        el: "#app",
+        data: {
+          friends: ["jack", "summer", "phoenix"]
+        }
+      });
+    </script>
+  </body>
+</html>

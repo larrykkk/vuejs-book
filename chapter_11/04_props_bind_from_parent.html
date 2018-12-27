@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <list
+          v-for="(list, index) in lists"
+          :key="index"
+          v-bind="list"
+          :name="name"
+        ></list>
+      </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
+    <script>
+      Vue.component("list", {
+        props: ["id", "text", "name"],
+        template:
+          "<li> {{ id }}. {{ text }} <input type='text' :placeholder='name' /></li>"
+      });
+      new Vue({
+        el: "#app",
+        data: {
+          lists: [
+            { id: 1, text: "My journey with Vue" },
+            { id: 2, text: "Blogging with Vue" },
+            { id: 3, text: "Why Vue is so fun" }
+          ],
+          name: "請輸入"
+        }
+      });
+    </script>
+  </body>
+</html>
