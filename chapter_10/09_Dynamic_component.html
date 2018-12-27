@@ -8,11 +8,15 @@
   </head>
   <body>
     <div id="app">
+      keep-alive
+      <hr>
+
       <button v-for="(btn, index) in btns" :key="index" @click="currentImg = imgs[index]">{{ btn }}</button>
       <br>
-      <keep-alive>
+
+        <!-- <keep-alive> -->
           <component :is="currentImg"></component>
-        </keep-alive>
+        <!-- </keep-alive> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
     <script>
@@ -34,11 +38,28 @@
         `
       });
 
+      Vue.component("test", {
+        template: `
+            <div>
+              <div> {{ number }} </div>
+              <button @click=" number++ "> +1</button> 
+            </div>
+        `,
+        data(){
+          return{
+            number: 0
+          }
+        },
+        methods:{
+
+        }
+      });
+
       new Vue({
         el: "#app",
         data: {
-          btns: ["貓", "狗", "兔"],
-          imgs: ["cat","dog","rabbit"],
+          btns: ["貓", "狗", "兔","文字"],
+          imgs: ["cat","dog","rabbit","test"],
           currentImg: "cat"
         }
       });

@@ -7,20 +7,20 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="demo">
+    <div id="demo" style="border:2px solid blue;">
       <div>demo1</div>
-      第一種
+      全局註冊
       <button-counter></button-counter>
       <br />
-      第二種<my-component></my-component>
+      局部註冊<my-component></my-component>
     </div>
     <hr>
-    <div id="demo2">
+    <div id="demo2" style="border:2px solid green;">
       <div>demo2</div>
-      第一種
+      全局註冊
       <button-counter></button-counter>
       <br />
-      第二種<my-component></my-component>
+      局部註冊<my-component></my-component>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
@@ -42,7 +42,7 @@
         components: {
           "my-component": {
             template:
-              "<h3>直接在vue instance 裡面寫component 缺點是就只能給這個instance使用  {{ msg }}</h3>",
+              "<span style='color:red'><h3>局部註冊是直接在vue instance 裡面寫component 缺點是就只能給這個instance使用  {{ msg }} </span>",
             data() {
               return {
                 msg: "hello world"

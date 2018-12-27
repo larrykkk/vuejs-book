@@ -8,15 +8,17 @@
   </head>
   <body>
     <div id="app">
+      <!-- <h3> 當沒給內容的時候就會顯示slot的預設內容 </h3> -->
       <alert-box> 任意添加內容 {{ msg }} </alert-box>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
     <script>
       Vue.component("alert-box", {
+
         template: `
             <div class="demo-alert-box">
-            <strong>Error!</strong>
-            <slot></slot>
+            <strong>預設內容</strong>
+            <slot>15151515</slot>
             </div>
         `
       });

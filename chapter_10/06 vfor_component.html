@@ -8,11 +8,13 @@
   </head>
   <body>
     <div id="app">
+      <h1> 搭配vfor 產生多個組件 </h1>
       <blog-post
         v-for="post in posts"
         v-bind:key="post.id"
         v-bind:post="post"
-      >1231231</blog-post>
+        style="border: solid black 2px"
+      ></blog-post>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.js"></script>
     <script>
@@ -29,9 +31,9 @@
         el: "#app",
         data: {
           posts: [
-            { id: 1, title: "My journey with Vue" },
-            { id: 2, title: "Blogging with Vue" },
-            { id: 3, title: "Why Vue is so fun",content:"123" }
+            { id: 1, title: "My journey with Vue" ,content:"內容一"},
+            { id: 2, title: "Blogging with Vue" ,content:"內容二"},
+            { id: 3, title: "Why Vue is so fun",content:"內容三" }
           ]
         }
       });
